@@ -40,6 +40,11 @@ app.get("/test", (req, res) => {
 app.post("/view-pet", async (req, res) => {
     const pets=await Pet.find()
     res.json(pets)
+}) 
+  
+app.post("/add-pet", async (req,res) => {
+    await Pet.create(req.body)
+    res.json({"status" : "success"})
 })
 
 app.listen(4000,() => {
