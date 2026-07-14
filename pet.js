@@ -37,6 +37,11 @@ app.get("/test", (req, res) => {
     res.send("hello")
 })
 
+app.post("/view-pet", async (req, res) => {
+    const pets=await Pet.find()
+    res.json(pets)
+}) 
+  
 app.post("/add-pet", async (req,res) => {
     await Pet.create(req.body)
     res.json({"status" : "success"})
