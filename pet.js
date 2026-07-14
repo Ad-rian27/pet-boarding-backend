@@ -37,6 +37,11 @@ app.get("/test", (req, res) => {
     res.send("hello")
 })
 
-app.listen(3000,() => {
+app.post("/add-pet", async (req,res) => {
+    await Pet.create(req.body)
+    res.json({"status" : "success"})
+})
+
+app.listen(4000,() => {
     console.log("Server started")
 })
